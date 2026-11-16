@@ -1,0 +1,43 @@
+
+# Environnement virtuel
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Airflow - fichiers generes
+airflow/logs/
+airflow/dags/__pycache__/
+airflow/airflow.db
+airflow/airflow.cfg
+airflow/webserver_config.py
+airflow/standalone_admin_password.txt
+
+# Secrets et variables d'environnement
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Fichiers temporaires
+*.log
+.DS_Store
+Thumbs.db
+
+# Donnees intermediaires generees
+data/processed/
+
+# Predictions generees
+data/mental_health_predictions.csv
+
+# Fichiers temporaires d'editeur
+.vscode/
+.idea/
