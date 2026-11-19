@@ -16,7 +16,7 @@ DATA_PATH = BASE_DIR / "data" / "student_mental_health_clean.csv"
 RESULTS_PATH = BASE_DIR / "data" / "results" / "evaluation_results.json"
 
 
-@st.cache_resource
+@st.cache_resource #garder le modele en cache
 def load_model():
     return joblib.load(MODEL_PATH)
 
@@ -31,7 +31,7 @@ feature_columns = data.drop(
     columns=["Student_ID", "Mental_Health_Risk"]
 ).columns.tolist()
 
-classes = list(model.classes_)
+classes = list(model.classes_)# Recuperer les classes du modele
 
 
 st.title("Student Mental Health Risk Prediction")
@@ -40,7 +40,7 @@ st.header("Model Performance")
 
 st.write("Performance of the trained classification models.")
 
-# Comparaison des modeles
+# comparaison des modeles
 comparison = []
 
 for name, result in results.items():
@@ -70,7 +70,7 @@ col4.metric("F1-score", f"{final_metrics['f1_macro']:.2%}")
 # tableau de comparaison
 
 st.subheader("Models Comparison")
-
+# afficher le tableau comparatif
 st.dataframe(
     comparison_df.style.format({
         "Accuracy": "{:.2%}",
@@ -177,14 +177,3 @@ if submitted:
 
     else:
         st.error(f"Predicted Risk: {prediction}")
-
-    # probabilites
-
-    if hasattr(model, "predict_proba"):
-
-        probabilities = model.predict_proba(new_student)[0]
-
-        probability_df = pd.DataFrame({
-            "Risk": classes,
-            "Probability": probabilities
-        })

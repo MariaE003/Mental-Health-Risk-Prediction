@@ -21,7 +21,7 @@ RESULTS_DIR = "/opt/mental-health-risk-prediction/data/results"
 
 with DAG(
     dag_id="mental_health_training",
-    start_date=datetime(2026, 1, 1),
+    start_date=datetime(2026, 11, 15),
     schedule="@weekly",
     catchup=False,
     tags=["mental-health", "training"]
